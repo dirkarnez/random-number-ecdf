@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "cstdint": "cpp",
+        "armadillo": "cpp",
+        "iostream": "cpp"
+    }
+}
