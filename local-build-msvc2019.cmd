@@ -13,8 +13,7 @@ cmake -G "Visual Studio 16 2019" -A x64 ^
 -DBUILD_SHARED_LIBS=OFF ^
 -DCMAKE_INSTALL_PREFIX="%~dp0build/armadillo-boilerplate" -B./build
 
+
 cd build
 cmake --build . --target ALL_BUILD --config Debug -- /nologo /verbosity:minimal /maxcpucount
-
 pause
-
