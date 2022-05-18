@@ -19,35 +19,40 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(armadillo STATIC IMPORTED)
+function (add_cpk_static_library cpk_library)
+  add_library(${cpk_library} STATIC IMPORTED)
 
-# set_property(TARGET ortools PROPERTY
-#  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-  
-set_property(
-  TARGET armadillo APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG
-)
+  # set_property(TARGET ortools PROPERTY
+  #  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    
+  set_property(
+    TARGET ${cpk_library} APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG
+  )
 
-set_target_properties(armadillo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "${ARMADILLO_ROOT}/lib/libarmadillo.a" #armadillo.lib"
-)
+  set_target_properties(${cpk_library} PROPERTIES
+    IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+    IMPORTED_LOCATION_DEBUG "${ARMADILLO_ROOT}/lib/libarmadillo.a" #armadillo.lib"
+  )
 
-set_property(
-  TARGET armadillo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE
-)
+  set_property(
+    TARGET ${cpk_library} APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE
+  )
 
-set_target_properties(armadillo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${ARMADILLO_ROOT}/lib/libarmadillo.a" #armadillo.lib"
-)
-  
-set_target_properties(armadillo PROPERTIES
-  MAP_IMPORTED_CONFIG_MINSIZEREL Release
-  MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release
-)
+  set_target_properties(${cpk_library} PROPERTIES
+    IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+    IMPORTED_LOCATION_RELEASE "${ARMADILLO_ROOT}/lib/libarmadillo.a" #armadillo.lib"
+  )
+    
+  set_target_properties(${cpk_library} PROPERTIES
+    MAP_IMPORTED_CONFIG_MINSIZEREL Release
+    MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release
+  )
 
-target_include_directories(armadillo INTERFACE "${ARMADILLO_ROOT}/include")
+  target_include_directories(${cpk_library} INTERFACE "${ARMADILLO_ROOT}/include")
+endfunction()
+
+add_cpk_static_library(armadillo )
+
 
 include_directories(${Boost_INCLUDE_DIRS})
 
@@ -65,6 +70,7 @@ add_executable(${PROJECT_NAME}
 #  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 target_link_libraries(${PROJECT_NAME} 
+  # ${CPK_LIBRARIES}
   armadillo
   ${Boost_LIBRARIES}
 )
