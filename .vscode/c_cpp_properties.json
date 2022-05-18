@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${env:USERPROFILE}/Downloads/armadillo-v11.1.1-msvc2019/include/**"
+                "${env:USERPROFILE}/Downloads/armadillo-v11.1.1-mingw/include/**",
+                "P:/Downloads/cpp-libraries/boost/include/boost-1_78/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -12,10 +13,10 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.18362.0",
-            "compilerPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.25.28610\\bin\\Hostx64\\x64\\cl.exe",
+            "compilerPath": "${env:USERPROFILE}/Downloads/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0/bin/gcc.exe",
             "cStandard": "c17",
             "cppStandard": "c++20",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

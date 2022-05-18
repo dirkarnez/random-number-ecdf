@@ -2,6 +2,10 @@
 #include <armadillo>
 #include <vector>
 
+#include <boost/math/distributions/empirical_cumulative_distribution_function.hpp>
+
+using boost::math::empirical_cumulative_distribution_function;
+using namespace boost::math;
 using namespace arma;
 
 void demo() {
@@ -19,22 +23,28 @@ void demo() {
 
 int main() {
   //demo();
-  vec random = randu<vec>(5);
+  vec random = randu<vec>(50);
  
+	std::vector<double> num_of_heads_for_fair_coin_tossed_twice = {0.0, 1.0, 1.0, 2.0};
+	auto ecdf = empirical_cumulative_distribution_function(std::move(num_of_heads_for_fair_coin_tossed_twice));
+
+  vec ecdf_samples = {0.0, 1.0, 2.0}; // source x
+
+  vec y = {ecdf(ecdf_samples[0]), ecdf(ecdf_samples[1]), ecdf(ecdf_samples[2])};
   // ecdf(0) = 0.25
   // ecdf(1) = 0.75
   // ecdf(2) = 1
-  vec ecdf_samples = {0.0, 1.0, 2.0}; // source x
-  vec y = {0.25, 0.75, 1.0};
+ 
 
   vec yy;
   // interp1( X, Y, XI, YI )
   // Given a 1D function specified in vectors X and Y (where X specifies locations and Y specifies the corresponding values),
   interp1(y, ecdf_samples, random, yy, "linear");  // use linear interpolation by default
   
+  std::cout << random <<std::endl;
   std::cout << ecdf_samples <<std::endl;
   std::cout << yy <<std::endl;
-  
+
   std::cin.get();
 
   return 0;
