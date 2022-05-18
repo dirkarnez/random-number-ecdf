@@ -22,7 +22,7 @@ set_property(
 
 set_target_properties(armadillo PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "${ARMADILLO_ROOT}/build/Debug/armadillo.lib"
+  IMPORTED_LOCATION_DEBUG "${ARMADILLO_ROOT}/lib/armadillo.lib"
 )
 
 set_property(
@@ -31,7 +31,7 @@ set_property(
 
 set_target_properties(armadillo PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${ARMADILLO_ROOT}/build/Release/armadillo.lib"
+  IMPORTED_LOCATION_RELEASE "${ARMADILLO_ROOT}/lib/armadillo.lib"
 )
   
 set_target_properties(armadillo PROPERTIES

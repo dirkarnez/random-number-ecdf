@@ -9,7 +9,7 @@ set DOWNLOAD_DIR_LINUX=%DOWNLOAD_DIR:\=/%
 SET PATH=%DOWNLOAD_DIR%\PortableGit\bin;%DOWNLOAD_DIR%\cmake-3.22.2-windows-x86_64\bin;
 
 cmake -G "Visual Studio 16 2019" -A x64 ^
--DARMADILLO_ROOT="P:/armadillo-11.0.1.tar/armadillo-11.0.1" ^
+-DARMADILLO_ROOT="%DOWNLOAD_DIR%/armadillo-v11.1.1-msvc2019" ^
 -DBUILD_SHARED_LIBS=OFF ^
 -DCMAKE_INSTALL_PREFIX="%~dp0build/armadillo-boilerplate" -B./build
 

@@ -15,10 +15,11 @@ int main() {
 
 
 
-
   // x and y should be cdf
-  vec yy;
-  interp1(x, y, xi, yy); 
+  // vec yy;
+  // interp1(x, y, xi, yy); 
   std::cout << v <<std::endl;
+  std::cin.get();
+
   return 0;
 }
