@@ -6,7 +6,6 @@ random-number-ecdf
 ### Prebuilts
 - [dirkarnez/armadillo-prebuilt](https://github.com/dirkarnez/armadillo-prebuilt)
 
-
 ### Octave example (working + proved correct on [Online Graph Maker · Plotly Chart Studio](https://chart-studio.plotly.com/create/#/))
 The two coin ecdf (0 head inclusive to 1 head exclusive = 0.25, 1 head inclusive to 2 heads exclusive= 0.75, 2 heads inclusive = 1)
 ```octave
@@ -17,3 +16,6 @@ x = interp1(empirical_cdf([0, 1, 2], [0, 1, 1, 2] /**/), [0, 1, 2], y, 'linear')
 - ^1 is the x-axis of ecdf
 - ^2 is the ecdf samples collected
 - ^3 is the x-axis for random numbers, should be the same as ^1
+
+![](two%20coins.jpg)
+- the "0"s are actually NaN, they are random numbers not fit to the red curve. I change them to "0" spot them
